@@ -1,0 +1,48 @@
+<style>
+    p {
+        font-size: 20px;
+        color: red;
+    }
+</style>
+
+<minha-receita-favorita></minha-receita-favorita>
+
+<template id="templateFood">
+    <li>
+        <span id="endereco"></span>
+    </li>
+</template>
+
+<button onclick="mostrarEnderecos()">Buscar template</button>
+
+<ul id="listaEnderecos"></ul>
+
+<p>A melhor comida de SP</p>
+
+<script>
+    const enderecos = [
+        'endereco 1',
+        'endereco 2',
+        'endereco 3'
+    ];
+
+    class MinhaReceitaFavorita extends HTMLElement {
+        connectedCallback() {
+            const shadowDom = document.getElementsByTagName('minha-receita-favorita')[0].attachShadow({ mode: 'open' });
+            shadowDom.innerHTML = '<img height="450" src="https://cdn.olivre.com.br/wp-content/uploads/2019/09/Ex%C3%A9rcito-americano-est%C3%A1-em-alerta-para-poss%C3%ADveis-tiroteios-em-sess%C3%B5es-de-Coringa-O-LIVRE.jpg"/><p>Minha receita favorita</p>';
+        }
+    }
+
+    customElements.define('minha-receita-favorita', MinhaReceitaFavorita);
+
+    function mostrarEnderecos() {
+        const template = document.getElementById('templateFood');
+        
+        enderecos.forEach(endereco => {
+            const instancia = document.importNode(template.content, true);
+            instancia.getElementById('endereco').innerHTML = endereco;
+
+            document.getElementById('listaEnderecos').appendChild(instancia);
+        });
+    }
+</script>

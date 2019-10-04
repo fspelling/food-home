@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Food Home</string>
+    <string name="title_activity_main">Food Home</string>
+    <string name="package_name">com.study.foodHome</string>
+    <string name="fileprovider_authority">com.study.foodHome.fileprovider</string>
+    <string name="custom_url_scheme">com.study.foodHome</string>
+</resources>
